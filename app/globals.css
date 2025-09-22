@@ -1,15 +1,30 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --background: #000;
-    --text: #fff;
+  --background: #000;
+  --text: #fff;
+  --gray: #252525;
+  --green: #00ff9d;
+  --yellow: #ffaa00;
+  --red: #ff1e00;
+  --bubble: #252525;
+}
+
+:root[data-theme="light"] {
+  --background: #fff;
+  --text: #ffffff;
+  --gray: #cccccc;
+  --green: #00ff9d;
+  --yellow: #ffbf00;
+  --red: #ff0040;
+  --bubble: #000000;
 }
 
 body {
-    background: var(--background);
-    color: var(--text);
+  background: var(--background);
+  color: var(--text);
 }
