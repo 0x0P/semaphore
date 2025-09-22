@@ -1,38 +1,277 @@
 .main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 20px;
-    border-radius: 100rem;
-    border: 2px solid #272727;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.container div {
-    padding: 20px;
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-    ;
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.red{
-    background-color : #ff2f00;
+
+.profileImage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.yellow{
-    background-color : #ffaa00;
+
+.profileImage img {
+  border-radius: 100%;
+  padding: 20px;
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--gray);
+  animation: img 0.5s both cubic-bezier(0.42, 0, 0.05, 1.01);
+  display: block;
 }
-.green{
-    background-color : #00ff9d;
+
+.thoughtBubble {
+  position: absolute;
+  bottom: 80%;
+  left: 80%;
+  transform: translateX(-50%);
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: none;
+  z-index: 10;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
+}
+
+.bubbleContent {
+  background-color: var(--bubble);
+  border-radius: 2rem;
+  padding: 1rem 0.5rem;
+  max-width: 350px;
+  min-width: 150px;
+  max-height: 120px;
+  overflow-y: auto;
+  white-space: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transform-origin: bottom;
+  animation: circle 0.5s both 0.6s cubic-bezier(0.42, 0, 0.05, 1.01);
+}
+
+.bubbleContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bubbleContent::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bubbleContent::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+
+.bubbleContent p {
+  margin: 0;
+  word-wrap: break-word;
+  line-height: 1.6;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.bubbleTail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+  margin-top: -10px;
+  margin-right: -100px;
+  position: relative;
+}
+
+.bubble1,
+.bubble2,
+.bubble3 {
+  background-color: var(--bubble);
+  border-radius: 50%;
+  display: block;
+  transform: scale(0);
+}
+
+.bubble1 {
+  width: 25px;
+  height: 25px;
+  animation: circle 0.5s both 0.5s cubic-bezier(0.42, 0, 0.05, 1.01);
+}
+
+.bubble2 {
+  width: 15px;
+  height: 15px;
+  animation: circle 0.5s both 0.4s cubic-bezier(0.42, 0, 0.05, 1.01);
+  margin-right: 20px;
+}
+
+.bubble3 {
+  width: 8px;
+  height: 8px;
+  animation: circle 0.5s both 0.3s cubic-bezier(0.42, 0, 0.05, 1.01);
+  margin-right: 35px;
+}
+
+.light {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 20px;
+  border-radius: 100rem;
+  border: 2px solid var(--gray);
+  animation: line 0.5s both 0.5s;
+}
+
+.light div {
+  padding: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  animation: light 1.25s both 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.red {
+  background-color: var(--red);
+}
+.yellow {
+  background-color: var(--yellow);
+}
+.green {
+  background-color: var(--green);
 }
 
 .gray {
-    background-color : #808080;
+  background-color: var(--gray);
+}
+
+/* Legacy speechBubble styles removed - now using thoughtBubble */
+
+.box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 767px) {
+  .box {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .thoughtBubble {
+    transform: translateX(-50%) scale(0.95);
+    margin-bottom: 10px;
+  }
+
+  .light {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bubbleContent {
+    max-width: 280px;
+    min-width: 170px;
+    max-height: 100px;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .profileImage img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thoughtBubble {
+    transform: translateX(-50%) scale(0.9);
+    margin-bottom: 8px;
+  }
+
+  .profileImage img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bubbleContent {
+    max-width: 240px;
+    min-width: 150px;
+    max-height: 90px;
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@keyframes light {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+    background-color: var(--gray);
+  }
+  50% {
+    opacity: 1;
+    background-color: var(--gray);
+    transform: translateX(0);
+  }
+  100% {
+    background-color: auto;
+  }
+}
+
+@keyframes line {
+  0% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: var(--gray);
+  }
+}
+
+@keyframes img {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    transform: scale(1);
+    border-color: var(--gray);
+    opacity: 1;
+  }
+}
+
+@keyframes bubble {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes circle {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
